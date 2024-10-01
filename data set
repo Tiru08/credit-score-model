@@ -1,0 +1,29 @@
+import pandas as pd
+import numpy as np
+
+# Set a random seed for reproducibility
+np.random.seed(42)
+
+# Number of records
+n = 1000
+
+# Generate synthetic data
+data = {
+    'age': np.random.randint(18, 70, size=n),
+    'income': np.random.randint(20000, 150000, size=n),
+    'loan_amount': np.random.randint(1000, 40000, size=n),
+    'credit_history': np.random.randint(1, 20, size=n),  # Length of credit history in years
+    'default': np.random.randint(0, 2, size=n),  # 0 = Good credit, 1 = Defaulted
+    'employment_status': np.random.choice(['employed', 'unemployed', 'self-employed'], size=n),
+    'home_ownership': np.random.choice(['own', 'rent', 'mortgage'], size=n),
+    'loan_purpose': np.random.choice(['personal', 'business', 'education', 'car', 'debt_consolidation'], size=n)
+}
+
+# Create a DataFrame
+df = pd.DataFrame(data)
+
+# Save to CSV
+df.to_csv('synthetic_credit_data.csv', index=False)
+
+# Display the first few rows
+print(df.head())
